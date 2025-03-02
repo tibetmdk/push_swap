@@ -6,11 +6,16 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:34:59 by tmidik            #+#    #+#             */
-/*   Updated: 2025/02/28 16:13:08 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/01 18:39:01 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "push_swap.h"
+
+void	ft_error(void)
+{
+	write(1, "Error\n", 6);
+}
 
 int	ft_strlen(char *str)
 {
@@ -36,57 +41,28 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-char	*join_args(int ac, char **av)
+long	ft_atol(char *str)
 {
-	int		len;
-	int		pos;
+	long	result;
+	int		sign;
 	int		i;
-	char	*buffer;
-
-	len = 0;
-	i = 1;
-	while (i < ac)
-	{
-		len += ft_strlen(av[i]) + 1;
-		i++;
-	}
-	buffer = (char *)malloc(sizeof(char) * len + 1);
-	pos = 0;
-	i = 1;
-	while (i < ac)
-	{
-		ft_strcpy(buffer + pos, av[i]);
-		pos += ft_strlen(av[i]);
-		if (i < ac - 1)
-			buffer[pos++] = ' ';
-		i++;
-	}
-	buffer[pos] = '\0';
-	return (buffer);
-}
-
-int	count_numbers(char *str)
-{
-	int	i;
-	int	count;
 
 	i = 0;
-	count = 0;
-	while (str[i] != '\0')
+	result = 0;
+	sign = 1;
+	while (str[i] == 32 || str[i] == '\t')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		while (str[i] == 32)
-			i++;
-		if (str[i] != '\0')
-		{
-			count++;
-			while (str[i] != '\0' && str[i] != 32)
-		}
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = (result * 10) + (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
 
-#include <stdio.h>
-
-int main(int ac, char **av)
-{
-	printf("%s", join_args(ac, av));
-}

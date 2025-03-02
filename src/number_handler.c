@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   controls.c                                         :+:      :+:    :+:   */
+/*   number_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 13:02:05 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/02 00:49:19 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/02 16:05:05 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int is_valid_number(char *str)
+int number_is_valid(char *str)
 {
 	int	i;
 
@@ -23,11 +23,19 @@ int is_valid_number(char *str)
 			i++;
 		if (str[i] == '+' || str[i] == '-')
 			i++;
-		if (str[i] )
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (1);
+		while (str[i] >= '0' && str[i] <= '9')
+			i++;
+		while (str[i] == 32 || str[i] == '\t')
+			i++;
+		if (str[i] != '\0')
+			return (1);
 	}
+	return (0);
 }
 
-static int	count_numbers(char *str)
+static int	number_count(char *str)
 {
 	int	i;
 	int	count;
@@ -54,7 +62,7 @@ int *parse_input(char *str, int *size)
     int count, i = 0, j = 0;
     long num;
 
-    count = count_numbers(str);
+    count = number_count(str);
     arr = malloc(sizeof(int) * count);
     if (!arr)
         return (NULL);

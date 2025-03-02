@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 13:03:54 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/02 00:29:46 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/02 17:54:20 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 
 int main(int ac, char **av)
 {
-    char    *joined_str;
-    int     *numbers;
-    int     size;
-
-    if (ac < 2)
-        return (ft_error(), 1);
-    
+    (void)av;
+    (void)ac;
+    //char    *joined_str;
+    //int     *numbers;
+    //int     size;
+    char **res = ft_split("123 123 123 123 123 123123    123", ' ');
+	int i = 0;
+	while (res[i])
+	{
+		printf("%s\n", res[i]);
+		i++;
+	}
+    free(res);
 }

@@ -13,11 +13,12 @@
 typedef struct s_data
 {
     char    **buffer;
+    int     *tab;
+    int     tab_size;
 }               t_data;
 
 
-int 	*parse_input(char *str, int *size);
-char	*join_args(int ac, char **av);
+int	    *parse_input(t_data *data);
 int     number_is_valid(char *str);
 int	    ft_strlen(const char *s);
 char	*ft_strcpy(char *dest, char *src);

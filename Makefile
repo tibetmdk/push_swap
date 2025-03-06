@@ -4,6 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS =	libft_utils/ft_atol.c \
 		libft_utils/ft_substr.c \
 		libft_utils/ft_strdup.c \
+		libft_utils/ft_strjoin.c \
 		libft_utils/ft_strlcpy.c \
 		libft_utils/ft_error.c \
 		libft_utils/ft_printf.c \
@@ -12,7 +13,8 @@ SRCS =	libft_utils/ft_atol.c \
 		libft_utils/ft_strchr.c \
 		libft_utils/ft_strlen.c \
 		src/main.c \
-		src/number_handler.c\
+		src/input_handler.c \
+		src/radix_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 

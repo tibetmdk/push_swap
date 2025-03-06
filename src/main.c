@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 13:03:54 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/03 15:44:41 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/04 18:11:06 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,37 @@
 
 int main(int ac, char **av)
 {
-	t_data	*data;
-	int		i;
-	
-	if (ac >= 2)
-	{
-		data = (t_data *)malloc(sizeof(t_data));
-		if (ac == 2)
-		{
-			data->buffer = ft_split(av[1], ' ');
-			i = 0;
-			while (data->buffer[i])
-			{
-				if (number_is_valid(data->buffer[i]))
-					ft_error();
-				i++;
-			}
-			if (parse_input(data))
-				return (1);
-			i = 0;
-			while (i < data->tab_size)
-			{
-				printf("%d\n", data->tab[i]);
-				i++;
-			}
+    t_data  *data;
+    char    *joined_args;
 
-			// 🛠 Belleği temizle
-			free(data->tab);
-			i = 0;
-			while (data->buffer[i])
-				free(data->buffer[i++]);
-			free(data->buffer);
-			free(data);
-		}	
-	}
-	else
-		ft_printf("wrong argument count!");
-	return (0);
+    if (ac >= 2)
+    {
+        data = (t_data *)malloc(sizeof(t_data));
+        if (!data)
+            return (1);
+        joined_args = join_args(ac, av);
+        if (!joined_args)
+            return (free(data), 1);
+        data->buffer = ft_split(joined_args, ' ');
+        free(joined_args);
+        if (!data->buffer)
+            return (free(data), 1);
+        if (parse_input(data) == 0)
+			radix_sort(data);
+		int i = 0;
+		ft_printf("sorted:");
+		while (i < data->tab_size)
+		{
+			ft_printf("%d, ", data->stack_a[i]);
+			i++;
+		}
+        free(data->tab);
+		free(data->stack_a);
+		free(data->stack_b);
+		i = 0;
+        while (data->buffer[i])
+            free(data->buffer[i++]);
+        free(data->buffer);
+        free(data);
+    }
 }

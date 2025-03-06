@@ -15,6 +15,10 @@ typedef struct s_data
     char    **buffer;
     int     *tab;
     int     tab_size;
+    int     *stack_a;
+    int     *stack_b;
+    int     top_a;
+    int     top_b;
 }               t_data;
 
 
@@ -30,5 +34,8 @@ char	*ft_substr(char const *s, int start, int len);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *destination, const char *source, size_t size);
 char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*join_args(int ac, char **av);
+void	radix_sort(t_data *data);
 
 #endif

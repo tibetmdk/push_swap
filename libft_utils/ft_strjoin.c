@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/02 16:40:34 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/03 19:19:36 by tmidik           ###   ########.fr       */
+/*   Created: 2025/03/03 19:39:48 by tmidik            #+#    #+#             */
+/*   Updated: 2025/03/03 19:40:09 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/push_swap.h"
 
-long	ft_atol(char *str)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	long	result;
-	int		sign;
+	char	*str;
 	int		i;
+	int		j;
+	int		total_len;
 
 	i = 0;
-	result = 0;
-	sign = 1;
-	while (str[i] == 32 || str[i] == '\t')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	j = 0;
+	total_len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	str = (char *)malloc(sizeof(char) * total_len);
+	if (!str)
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		if (str[i] == '-')
-			sign = -1;
+		str[i] = s1[i];
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (s2[j] != '\0')
 	{
-		result = (result * 10) + (str[i] - '0');
-		if ((sign == 1 && result > INT_MAX ) || (sign == -1 && -result < INT_MIN))
-			ft_error();
+		str[i] = s2[j];
 		i++;
+		j++;
 	}
-	return (result * sign);
+	str[i] = '\0';
+	return (str);
 }

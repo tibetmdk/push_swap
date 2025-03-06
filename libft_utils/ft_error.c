@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:44:25 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/03 15:28:20 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/04 12:20:26 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_error(void)
 {
 	write(2, "Error\n", 6);
-	exit(1);
+	exit(EXIT_FAILURE);
 }

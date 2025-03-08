@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 13:03:54 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/04 18:11:06 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/07 18:23:50 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,7 @@ int main(int ac, char **av)
         free(joined_args);
         if (!data->buffer)
             return (free(data), 1);
-        if (parse_input(data) == 0)
-			radix_sort(data);
-		int i = 0;
-		ft_printf("sorted:");
-		while (i < data->tab_size)
-		{
-			ft_printf("%d, ", data->stack_a[i]);
-			i++;
-		}
-        free(data->tab);
-		free(data->stack_a);
-		free(data->stack_b);
-		i = 0;
-        while (data->buffer[i])
-            free(data->buffer[i++]);
-        free(data->buffer);
-        free(data);
-    }
+		if (parse_input(data) == 0)
+			init_stacks(data);
+	}
 }

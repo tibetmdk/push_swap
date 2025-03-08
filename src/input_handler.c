@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 13:02:05 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/03 19:39:03 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/07 18:21:30 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	*parse_input(t_data *data)
 	i = 0;
 	while (data->buffer[i])
 	{
+		if (number_is_valid(data->buffer[i])) // Sayının geçerli olup olmadığını kontrol et
+			ft_error();
 		data->tab[i] = ft_atol(data->buffer[i]);
 		i++;
 	}

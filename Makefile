@@ -14,7 +14,6 @@ SRCS =	libft_utils/ft_atol.c \
 		libft_utils/ft_strlen.c \
 		src/main.c \
 		src/input_handler.c \
-		src/radix_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 

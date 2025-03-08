@@ -9,16 +9,26 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
+typedef struct s_stack
+{
+    int value;
+    int index;
+    int push_cost;
+    int cheapest;
+    int above_med;
+    struct t_stack *target_node;
+    struct t_stack *prev;
+    struct t_stack *next;
+}              t_stack;
+
 
 typedef struct s_data
 {
-    char    **buffer;
-    int     *tab;
-    int     tab_size;
-    int     *stack_a;
-    int     *stack_b;
-    int     top_a;
-    int     top_b;
+    char        **buffer;
+    int         *tab;
+    int         tab_size;
+    t_stack     **stack_a;
+    t_stack     *stack_b;
 }               t_data;
 
 

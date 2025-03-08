@@ -1,0 +1,101 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/08 17:02:41 by tmidik            #+#    #+#             */
+/*   Updated: 2025/03/08 17:42:38 by tmidik           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	swap(t_stack **stack)
+{
+	t_stack *first;
+	t_stack *second;
+
+	if(!*stack || !(*stack)->next)
+		return ;
+	first = *stack;
+	second = first->next;
+
+	first->next = second->next;
+	if (second->next)
+		second->next->prev = first;
+	second->prev = NULL;
+	second->next = first;
+	first->prev = second;
+	*stack = second;
+}
+
+void	push_a(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*top_b;
+	
+	if (!*stack_b)
+		return ;
+	top_b = *stack_b;
+	if (*stack_b)
+		(*stack_b)->prev = NULL;
+	top_b->next = *stack_a;
+	if (*stack_a)
+		(*stack_a)->prev = top_b;
+	*stack_a = top_b;
+}
+
+void	push_b(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*top_a;
+	
+	if (!*stack_a)
+		return ;
+	top_a = *stack_a;
+	if (*stack_a)
+		(*stack_a)->prev = NULL;
+	top_a->next = *stack_b;
+	if (*stack_b)
+		(*stack_b)->prev = top_a;
+	*stack_b = top_a;
+}
+
+void rotate(t_stack **stack)
+{
+    t_stack *first;
+    t_stack *last;
+
+    if (!*stack || !(*stack)->next)
+        return;
+
+    first = *stack;
+    *stack = first->next;
+    (*stack)->prev = NULL;
+
+    last = *stack;
+    while (last->next)
+        last = last->next;
+
+    last->next = first;
+    first->prev = last;
+    first->next = NULL;
+}
+
+void revrotate(t_stack **stack)
+{
+    t_stack *last;
+
+    if (!*stack || !(*stack)->next)
+        return;
+
+    last = *stack;
+    while (last->next)
+        last = last->next;
+
+    last->prev->next = NULL;
+    last->prev = NULL;
+    last->next = *stack;
+    (*stack)->prev = last;
+    *stack = last;
+}

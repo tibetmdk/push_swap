@@ -16,9 +16,10 @@ typedef struct s_stack
     int push_cost;
     int cheapest;
     int above_med;
-    struct t_stack *target_node;
-    struct t_stack *prev;
-    struct t_stack *next;
+    int size;
+    struct s_stack *target_node;
+    struct s_stack *prev;
+    struct s_stack *next;
 }              t_stack;
 
 
@@ -47,5 +48,15 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*join_args(int ac, char **av);
 void	radix_sort(t_data *data);
+int     init_stack_a(t_data *data);
+t_stack *create_node(int value);
+void append_node(t_stack **stack, int value);
+void	swap(t_stack **stack);
+void	push_a(t_stack **stack_a, t_stack **stack_b);
+void	push_b(t_stack **stack_a, t_stack **stack_b);
+void    rotate(t_stack **stack);
+void    revrotate(t_stack **stack);
+void    ss(t_stack **stack_a, t_stack **stack_b);
+void    rrr(t_stack **stack_a, t_stack **stack_b);
 
 #endif

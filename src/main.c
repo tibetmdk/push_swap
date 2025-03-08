@@ -6,12 +6,24 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 13:03:54 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/07 18:23:50 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/08 14:24:12 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
+static void print_stack(t_stack *stack)
+{
+    t_stack *temp;
+
+    temp = stack;
+    while (temp)
+    {
+        ft_printf("%d\n", temp->value);
+        temp = temp->next;
+    }
+}
 
 int main(int ac, char **av)
 {
@@ -31,6 +43,7 @@ int main(int ac, char **av)
         if (!data->buffer)
             return (free(data), 1);
 		if (parse_input(data) == 0)
-			init_stacks(data);
+			init_stack_a(data);
+        print_stack(*data->stack_a);
 	}
 }

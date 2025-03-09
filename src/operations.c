@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 17:02:41 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/09 11:56:33 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/09 15:38:50 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,21 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 void	push_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*top_a;
-	
-	if (!stack_a || !*stack_a)
-	{
-		ft_printf("HATA: stack_a boş, pb işlemi gerçekleştirilemez!");
+
+	if (!*stack_a)
 		return ;
-	}
 	top_a = *stack_a;
+	*stack_a = (*stack_a)->next;
 	if (*stack_a)
 		(*stack_a)->prev = NULL;
-	top_a->next = *stack_b;
-	if (*stack_b)
-		(*stack_b)->prev = top_a;
+	if (!*stack_b) // Eğer stack_b boşsa, top_a'nın next'i NULL olmalı
+		top_a->next = NULL;
+	else {
+		top_a->next = *stack_b;
+		if (*stack_b) // stack_b boş değilse, prev bağlantısını güncelle
+			(*stack_b)->prev = top_a;
+	}
+	top_a->prev = NULL;
 	*stack_b = top_a;
 }
 

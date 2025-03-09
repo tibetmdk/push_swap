@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:28:05 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/08 18:28:34 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/09 16:50:42 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void find_target_a(t_stack **stack_a, t_stack **stack_b)
         a->target_node = find_best_match(*stack_b, a->value);
         if (!a->target_node)
             a->target_node = find_max_in_stack(*stack_b);
+        ft_printf("%d\n", a->target_node->value);
         a = a->next;
     }
 }

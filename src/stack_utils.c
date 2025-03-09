@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 18:24:04 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/08 14:33:29 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/09 15:34:57 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,14 @@ int init_stack_a(t_data *data)
     int i;
 
     i = 0;
-    data->stack_a = (t_stack **)malloc(sizeof(t_stack *));
-    data->stack_b = NULL; // Başlangıçta stack_b boş
+    data->stack_a = (t_stack **)malloc(data->tab_size * sizeof(t_stack *));
+    data->stack_b = (t_stack **)malloc(data->tab_size * sizeof(t_stack *));
 
     if (!data->stack_a)
         ft_error(); // Bellek tahsis hatası kontrolü
     
     *data->stack_a = NULL; // Başlangıçta stack boş
+    *data->stack_b = NULL; // Başlangıçta stack boş
 
     while (i < data->tab_size)
     {

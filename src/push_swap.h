@@ -63,4 +63,5 @@ t_stack *find_max_in_stack(t_stack *stack_b);
 void    find_target_a(t_stack **stack_a, t_stack **stack_b);
 void    turk_sort(t_stack **stack_a, t_stack **stack_b);
 int     get_stack_len(t_stack *stack);
+int     is_sorted(t_stack *stack);
 #endif

@@ -29,7 +29,7 @@ typedef struct s_data
     int         *tab;
     int         tab_size;
     t_stack     **stack_a;
-    t_stack     *stack_b;
+    t_stack     **stack_b;
 }               t_data;
 
 
@@ -58,5 +58,9 @@ void    rotate(t_stack **stack);
 void    revrotate(t_stack **stack);
 void    ss(t_stack **stack_a, t_stack **stack_b);
 void    rrr(t_stack **stack_a, t_stack **stack_b);
-
+t_stack *find_best_match(t_stack *stack_b, int value);
+t_stack *find_max_in_stack(t_stack *stack_b);
+void    find_target_a(t_stack **stack_a, t_stack **stack_b);
+void    turk_sort(t_stack **stack_a, t_stack **stack_b);
+int     get_stack_len(t_stack *stack);
 #endif

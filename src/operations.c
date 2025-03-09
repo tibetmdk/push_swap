@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 17:02:41 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/08 17:42:38 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/09 11:56:33 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*top_a;
 	
-	if (!*stack_a)
+	if (!stack_a || !*stack_a)
+	{
+		ft_printf("HATA: stack_a boş, pb işlemi gerçekleştirilemez!");
 		return ;
+	}
 	top_a = *stack_a;
 	if (*stack_a)
 		(*stack_a)->prev = NULL;

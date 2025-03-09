@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 13:03:54 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/08 14:24:12 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/09 11:53:03 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int main(int ac, char **av)
             return (free(data), 1);
 		if (parse_input(data) == 0)
 			init_stack_a(data);
+        turk_sort(data->stack_a, data->stack_b);
         print_stack(*data->stack_a);
+        print_stack(*data->stack_b);
 	}
 }

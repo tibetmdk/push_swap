@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 SRCS =	libft_utils/ft_atol.c \
 		libft_utils/ft_substr.c \
@@ -18,6 +18,7 @@ SRCS =	libft_utils/ft_atol.c \
 		src/operations.c \
 		src/operations_2.c \
 		src/turk_sort.c \
+		src/sort_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 

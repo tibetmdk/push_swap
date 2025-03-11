@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 18:24:04 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/09 15:34:57 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/10 22:28:00 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,30 @@ int init_stack_a(t_data *data)
         i++;
     }
     return (1);
+}
+
+int get_index(t_stack *stack, t_stack *node)
+{
+	int index = 0;
+	while (stack)
+	{
+		if (stack == node)
+			return index;
+		stack = stack->next;
+		index++;
+	}
+	return (-1); // Eğer node bulunamazsa hata döndür
+}
+
+int	get_stack_len(t_stack *stack)
+{
+	int i;
+
+	i = 0;
+	while (stack)
+	{
+		i++;
+		stack = stack->next;
+	}
+	return (i);
 }

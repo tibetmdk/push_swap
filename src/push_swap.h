@@ -13,6 +13,10 @@ typedef struct s_stack
 {
     int value;
     int index;
+    int ra;
+    int rb;
+    int rra;
+    int rrb;
     int push_cost;
     int cheapest;
     int above_med;
@@ -47,7 +51,6 @@ size_t	ft_strlcpy(char *destination, const char *source, size_t size);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*join_args(int ac, char **av);
-void	radix_sort(t_data *data);
 int     init_stack_a(t_data *data);
 t_stack *create_node(int value);
 void append_node(t_stack **stack, int value);
@@ -58,10 +61,22 @@ void    rotate(t_stack **stack);
 void    revrotate(t_stack **stack);
 void    ss(t_stack **stack_a, t_stack **stack_b);
 void    rrr(t_stack **stack_a, t_stack **stack_b);
+void    rr(t_stack **stack_a, t_stack **stack_b);
 t_stack *find_best_match(t_stack *stack_b, int value);
 t_stack *find_max_in_stack(t_stack *stack_b);
 void    find_target_a(t_stack **stack_a, t_stack **stack_b);
 void    turk_sort(t_stack **stack_a, t_stack **stack_b);
 int     get_stack_len(t_stack *stack);
 int     is_sorted(t_stack *stack);
+int     get_index(t_stack *stack, t_stack *node);
+void	move_a_to_b(t_stack **stack_a , t_stack **stack_b);
+void    calculate_cost(t_stack **stack_a, t_stack **stack_b);
+void	bring_to_top(t_stack **stack_a);
+void	bring_target_top(t_stack **stack_a, t_stack **stack_b);
+void    move_cheapest_to_b(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest);
+t_stack	*find_cheapest(t_stack *stack_a);
+void	sort_three(t_stack **stack_a);
+
+
+
 #endif

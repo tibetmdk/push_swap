@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 17:02:41 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/09 15:38:50 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/10 19:59:11 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,21 @@ void	swap(t_stack **stack)
 void	push_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*top_b;
-	
+
 	if (!*stack_b)
 		return ;
 	top_b = *stack_b;
+	*stack_b = (*stack_b)->next;
 	if (*stack_b)
 		(*stack_b)->prev = NULL;
-	top_b->next = *stack_a;
-	if (*stack_a)
-		(*stack_a)->prev = top_b;
+	if (!*stack_a) // Eğer stack_b boşsa, top_a'nın next'i NULL olmalı
+		top_b->next = NULL;
+	else {
+		top_b->next = *stack_a;
+		if (*stack_a) // stack_b boş değilse, prev bağlantısını güncelle
+			(*stack_a)->prev = top_b;
+	}
+	top_b->prev = NULL;
 	*stack_a = top_b;
 }
 

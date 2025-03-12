@@ -18,8 +18,10 @@ SRCS =	libft_utils/ft_atol.c \
 		src/operations.c \
 		src/operations_2.c \
 		src/turk_sort.c \
-		src/sort_utils.c \
+		src/sort_utils_a_to_b.c \
+		src/sort_utils_b_to_a.c \
 		src/cost_a_to_b.c \
+		src/cost_b_to_a.c \
 
 OBJS = $(SRCS:.c=.o)
 

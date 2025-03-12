@@ -6,24 +6,25 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 20:21:39 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/10 23:58:48 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/12 11:11:42 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void calculate_cost(t_stack **stack_a, t_stack **stack_b)
+void calculate_cost_a_to_b(t_stack **stack_a, t_stack **stack_b)
 {
     t_stack *a;
 	int		rr;
 	int		rrr;
+	
     if (!stack_a || !*stack_a || !stack_b || !*stack_b)
         return;
     a = *stack_a;
     while (a)
     {
-        bring_to_top(stack_a);
-        bring_target_top(stack_a, stack_b);
+        bring_to_top_a(stack_a);
+        bring_target_top_b(stack_a, stack_b);
         rr = 0;
         rrr = 0;
         while (a->ra > 0 && a->rb > 0 && ++rr)
@@ -41,7 +42,7 @@ void calculate_cost(t_stack **stack_a, t_stack **stack_b)
     }
 }
 
-void	bring_to_top(t_stack **stack_a)
+void	bring_to_top_a(t_stack **stack_a)
 {
 	t_stack *a;
 	int	pos;
@@ -64,7 +65,7 @@ void	bring_to_top(t_stack **stack_a)
 	}
 }
 
-void	bring_target_top(t_stack **stack_a, t_stack **stack_b)
+void	bring_target_top_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*a;
 	int		pos;
@@ -90,4 +91,22 @@ void	bring_target_top(t_stack **stack_a, t_stack **stack_b)
 			a->rrb = len_b - pos;
 		a = a->next;
 	}
+}
+
+t_stack	*find_cheapest_in_a(t_stack *stack_a)
+{
+	t_stack	*cheapest;
+	t_stack	*current;
+
+	if (!stack_a)
+		return (NULL);
+	cheapest = stack_a;
+	current = stack_a->next;
+	while (current)
+	{
+		if (current->push_cost < cheapest->push_cost)
+			cheapest = current;
+		current = current->next;
+	}
+	return (cheapest);
 }

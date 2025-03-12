@@ -62,21 +62,31 @@ void    revrotate(t_stack **stack);
 void    ss(t_stack **stack_a, t_stack **stack_b);
 void    rrr(t_stack **stack_a, t_stack **stack_b);
 void    rr(t_stack **stack_a, t_stack **stack_b);
-t_stack *find_best_match(t_stack *stack_b, int value);
+t_stack *find_best_match_in_b(t_stack *stack_b, int value);
 t_stack *find_max_in_stack(t_stack *stack_b);
-void    find_target_a(t_stack **stack_a, t_stack **stack_b);
+void    find_target_in_b(t_stack **stack_a, t_stack **stack_b);
 void    turk_sort(t_stack **stack_a, t_stack **stack_b);
 int     get_stack_len(t_stack *stack);
 int     is_sorted(t_stack *stack);
 int     get_index(t_stack *stack, t_stack *node);
 void	move_a_to_b(t_stack **stack_a , t_stack **stack_b);
-void    calculate_cost(t_stack **stack_a, t_stack **stack_b);
-void	bring_to_top(t_stack **stack_a);
-void	bring_target_top(t_stack **stack_a, t_stack **stack_b);
+void    calculate_cost_a_to_b(t_stack **stack_a, t_stack **stack_b);
+void	calculate_cost_b_to_a(t_stack **stack_a, t_stack **stack_b);
+void	bring_to_top_a(t_stack **stack_a);
+void	bring_target_top_b(t_stack **stack_a, t_stack **stack_b);
+void	bring_target_top_a(t_stack **stack_a, t_stack **stack_b);
+void	bring_to_top_b(t_stack **stack_b);
 void    move_cheapest_to_b(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest);
-t_stack	*find_cheapest(t_stack *stack_a);
+t_stack	*find_cheapest_in_a(t_stack *stack_a);
+t_stack	*find_cheapest_in_b(t_stack *stack_b);
 void	sort_three(t_stack **stack_a);
+t_stack	*find_best_match_in_a(t_stack *stack_a, int value);
+t_stack	*find_min_in_stack(t_stack *stack_a);
+void	find_target_in_a(t_stack **stack_a, t_stack **stack_b);
+void move_cheapest_to_a(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest);
+void	move_b_to_a(t_stack **stack_a, t_stack **stack_b);
 
 
 
+void    printf_both_stack(t_stack *stack_a, t_stack *stack_b);
 #endif

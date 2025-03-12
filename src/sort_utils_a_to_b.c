@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:28:05 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/12 13:41:34 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/12 20:34:03 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ void move_cheapest_to_b(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest)
 		cheapest->rrb--;
 	}
 	while (cheapest->ra-- > 0)
-		rotate(stack_a);
+		rotate(stack_a, 'a');
 	while (cheapest->rra-- > 0)	
-		revrotate(stack_a);
+		revrotate(stack_a, 'a');
 	while (cheapest->rb-- > 0)
-		rotate(stack_b);
+		rotate(stack_b, 'b');
 	while (cheapest->rrb-- > 0)
-		revrotate(stack_b);
+		revrotate(stack_b, 'b');
 	push_b(stack_a, stack_b);
 }
 
@@ -100,16 +100,11 @@ void	move_a_to_b(t_stack **stack_a , t_stack **stack_b)
 	
 	while (stack_len > 3)
 	{
-		printf_both_stack(*stack_a, *stack_b);
-		sleep(1);
 		find_target_in_b(stack_a, stack_b);
 		calculate_cost_a_to_b(stack_a, stack_b);
 		cheapest = find_cheapest_in_a(*stack_a);
 		move_cheapest_to_b(stack_a, stack_b, cheapest);
 		stack_len = get_stack_len(*stack_a);
 	}
-	printf_both_stack(*stack_a, *stack_b);
 	sort_three(stack_a);
-	printf_both_stack(*stack_a, *stack_b);
-	ft_printf("------------------------------\n\n");
 }

@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:35:56 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/12 19:58:55 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/12 20:32:17 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ void	sort_three(t_stack **stack_a)
 	b = (*stack_a)->next->value;
 	c = (*stack_a)->next->next->value;
 	if (a > b && b < c && a < c)
-		swap(stack_a);
+		swap(stack_a, 'a');
 	else if (a > b && b > c)
 	{
-		swap(stack_a);
-		revrotate(stack_a);
+		swap(stack_a, 'a');
+		revrotate(stack_a, 'a');
 	}
 	else if (a > b && b < c && a > c)
-		rotate(stack_a);
+		rotate(stack_a, 'a');
 	else if (a < b && b > c && a < c)
 	{
-		swap(stack_a);
-		rotate(stack_a);
+		swap(stack_a, 'a');
+		rotate(stack_a, 'a');
 	}
 	else if (a < b && b > c && a > c)
-		revrotate(stack_a);
+		revrotate(stack_a, 'a');
 }
 
 int	is_sorted(t_stack *stack)
@@ -88,12 +88,12 @@ static void final_rotation(t_stack **stack_a)
 	if (min_index <= size/2)
 	{
 		while (min_index-- > 0)
-			rotate(stack_a);
+			rotate(stack_a, 'a');
 	}
 	else
 	{
 		while (min_index++ < size)
-			revrotate(stack_a);
+			revrotate(stack_a, 'a');
 	}
 }
 

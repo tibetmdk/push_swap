@@ -6,14 +6,14 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 13:03:54 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/12 13:40:31 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/12 20:52:31 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void    printf_both_stack(t_stack *stack_a, t_stack *stack_b)
+/*void    printf_both_stack(t_stack *stack_a, t_stack *stack_b)
 {
     if (!stack_a && !stack_b)
     {
@@ -47,7 +47,7 @@ static void print_stack(t_stack *stack)
         ft_printf("%d\n", temp->value);
         temp = temp->next;
     }
-}
+}*/
 
 int main(int ac, char **av)
 {
@@ -69,7 +69,7 @@ int main(int ac, char **av)
 		if (parse_input(data) == 0)
 			init_stack_a(data);
         turk_sort(data->stack_a, data->stack_b);
-        print_stack(*data->stack_a);
-        ft_printf("\n");
+        //print_stack(*data->stack_a);
+        //ft_printf("\n");
 	}
 }

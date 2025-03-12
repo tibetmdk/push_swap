@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:35:56 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/12 11:10:00 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/12 19:58:55 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,48 @@ int	is_sorted(t_stack *stack)
 	}
 	return (0);
 }
+static int get_min_index(t_stack *a)
+{
+    int min;
+    int index;
+    int i;
+
+    if (!a)
+        return (-1);
+    min = a->value;
+    index = 0;
+    i = 0;
+    while (a)
+    {
+        if (a->value < min)
+        {
+            min = a->value;
+            index = i;
+        }
+        a = a->next;
+        i++;
+    }
+    return (index);
+}
+
+static void final_rotation(t_stack **stack_a)
+{
+	int	min_index;
+	int	size;
+
+	min_index = get_min_index(*stack_a);
+	size = get_stack_len(*stack_a);
+	if (min_index <= size/2)
+	{
+		while (min_index-- > 0)
+			rotate(stack_a);
+	}
+	else
+	{
+		while (min_index++ < size)
+			revrotate(stack_a);
+	}
+}
 
 void	turk_sort(t_stack **stack_a, t_stack **stack_b)
 {
@@ -66,4 +108,6 @@ void	turk_sort(t_stack **stack_a, t_stack **stack_b)
 		push_b(stack_a, stack_b);
 	move_a_to_b(stack_a, stack_b);
 	move_b_to_a(stack_a, stack_b);
+	if (is_sorted(*stack_a))
+		final_rotation(stack_a);
 }

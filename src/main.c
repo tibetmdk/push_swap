@@ -6,38 +6,35 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 13:03:54 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/12 11:36:50 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/12 13:40:31 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void printf_both_stack(t_stack *stack_a, t_stack *stack_b)
+void    printf_both_stack(t_stack *stack_a, t_stack *stack_b)
 {
-    t_stack *temp1 = stack_a;
-    t_stack *temp2 = stack_b;
+    if (!stack_a && !stack_b)
+    {
+        ft_printf("Stacks are empty!\n");
+        return;
+    }
 
     ft_printf("A: ");
-    while (temp1)
+    while (stack_a)
     {
-        if (temp1->value) // NULL kontrolü
-            ft_printf("%s\t", temp1->value);
-        else
-            ft_printf("(null)\t");
-        temp1 = temp1->next;
+        ft_printf("%d\t", stack_a->value ? stack_a->value : 0);
+        stack_a = stack_a->next;
     }
 
     ft_printf("\nB: ");
-    while (temp2)
+    while (stack_b)
     {
-        if (temp2->value) // NULL kontrolü
-            ft_printf("%s\t", temp2->value);
-        else
-            ft_printf("(null)\t");
-        temp2 = temp2->next;
+        ft_printf("%d\t", stack_b->value ? stack_b->value : 0);
+        stack_b = stack_b->next;
     }
-    ft_printf("\n");
+    ft_printf("\n\n\n");
 }
 
 static void print_stack(t_stack *stack)

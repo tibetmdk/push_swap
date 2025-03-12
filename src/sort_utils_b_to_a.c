@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:52:33 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/12 11:30:19 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/12 19:44:34 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,13 @@ void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)
 	stack_len = get_stack_len(*stack_b);
 	while (stack_len > 0)
 	{
-		find_target_in_b(stack_a, stack_b);
+		printf_both_stack(*stack_a, *stack_b);
+		sleep(1);
+		find_target_in_a(stack_a, stack_b);
 		calculate_cost_b_to_a(stack_a, stack_b);
 		cheapest = find_cheapest_in_b(*stack_b);
 		move_cheapest_to_a(stack_a, stack_b, cheapest);
 		stack_len = get_stack_len(*stack_b);
-		printf_both_stack(*stack_a, *stack_b);
-		sleep(2);
 	}
+	printf_both_stack(*stack_a, *stack_b);
 }

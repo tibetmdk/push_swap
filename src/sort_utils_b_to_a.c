@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:52:33 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/12 20:34:14 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/14 10:07:42 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,25 +69,25 @@ void move_cheapest_to_a(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest)
 		return ;
 	while (cheapest->ra > 0 && cheapest->rb > 0)
 	{
-		rr(stack_a, stack_b);
+		rr(stack_a, stack_b, 1);
 		cheapest->ra--;
 		cheapest->rb--;
 	}
 	while (cheapest->rra > 0 && cheapest->rrb > 0)
 	{
-		rrr(stack_a, stack_b);
+		rrr(stack_a, stack_b, 1);
 		cheapest->rra--;
 		cheapest->rrb--;
 	}
 	while (cheapest->ra-- > 0)
-		rotate(stack_a, 'a');
+		rotate(stack_a, 'a', 1);
 	while (cheapest->rra-- > 0)	
-		revrotate(stack_a, 'a');
+		revrotate(stack_a, 'a', 1);
 	while (cheapest->rb-- > 0)
-		rotate(stack_b, 'b');
+		rotate(stack_b, 'b', 1);
 	while (cheapest->rrb-- > 0)
-		revrotate(stack_b, 'b');
-	push_a(stack_a, stack_b);
+		revrotate(stack_b, 'b', 1);
+	push_a(stack_a, stack_b, 1);
 }
 
 void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)

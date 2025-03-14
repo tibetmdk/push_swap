@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS =	libft_utils/ft_atol.c \
 		libft_utils/ft_substr.c \

@@ -6,13 +6,13 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 17:02:41 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/12 20:33:01 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/14 10:05:00 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack **stack, char stack_name)
+void	s_wap(t_stack **stack, char stack_name, int	print)
 {
 	t_stack *first;
 	t_stack *second;
@@ -29,13 +29,16 @@ void	swap(t_stack **stack, char stack_name)
 	second->next = first;
 	first->prev = second;
 	*stack = second;
-	if (stack_name == 'a')
-		ft_printf("sa\n");
-	else if (stack_name == 'b')
-		ft_printf("sb\n");
+	if (print)
+	{
+		if (stack_name == 'a')
+			ft_printf("sa\n");
+		else if (stack_name == 'b')
+			ft_printf("sb\n");
+	}
 }
 
-void	push_a(t_stack **stack_a, t_stack **stack_b)
+void	push_a(t_stack **stack_a, t_stack **stack_b, int print)
 {
 	t_stack	*top_b;
 
@@ -54,10 +57,11 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 	}
 	top_b->prev = NULL;
 	*stack_a = top_b;
-	ft_printf("pa\n");
+	if (print)
+		ft_printf("pa\n");
 }
 
-void	push_b(t_stack **stack_a, t_stack **stack_b)
+void	push_b(t_stack **stack_a, t_stack **stack_b, int print)
 {
 	t_stack	*top_a;
 
@@ -76,10 +80,11 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 	}
 	top_a->prev = NULL;
 	*stack_b = top_a;
-	ft_printf("pb\n");
+	if (print)
+		ft_printf("pb\n");
 }
 
-void rotate(t_stack **stack, char stack_name)
+void rotate(t_stack **stack, char stack_name, int print)
 {
     t_stack *first;
     t_stack *last;
@@ -98,13 +103,16 @@ void rotate(t_stack **stack, char stack_name)
     last->next = first;
     first->prev = last;
     first->next = NULL;
-	if (stack_name == 'a')
-		ft_printf("ra\n");
-	else if (stack_name == 'b')
-		ft_printf("rb\n");
+	if (print)
+	{
+		if (stack_name == 'a')
+			ft_printf("ra\n");
+		else if (stack_name == 'b')
+			ft_printf("rb\n");
+	}
 }
 
-void revrotate(t_stack **stack, char stack_name)
+void revrotate(t_stack **stack, char stack_name, int print)
 {
     t_stack *last;
 
@@ -120,8 +128,11 @@ void revrotate(t_stack **stack, char stack_name)
     last->next = *stack;
     (*stack)->prev = last;
     *stack = last;
-	if (stack_name == 'a')
-		ft_printf("rra\n");
-	else if (stack_name == 'b')
-		ft_printf("rrb\n");
+	if (print)
+	{
+		if (stack_name == 'a')
+			ft_printf("rra\n");
+		else if (stack_name == 'b')
+			ft_printf("rrb\n");
+	}
 }

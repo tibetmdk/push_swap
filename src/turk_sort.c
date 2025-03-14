@@ -6,7 +6,7 @@
 /*   By: tmidik <tibetmdk@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:35:56 by tmidik            #+#    #+#             */
-/*   Updated: 2025/03/12 20:32:17 by tmidik           ###   ########.fr       */
+/*   Updated: 2025/03/14 10:03:01 by tmidik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ void	sort_three(t_stack **stack_a)
 	b = (*stack_a)->next->value;
 	c = (*stack_a)->next->next->value;
 	if (a > b && b < c && a < c)
-		swap(stack_a, 'a');
+		s_wap(stack_a, 'a', 1);
 	else if (a > b && b > c)
 	{
-		swap(stack_a, 'a');
-		revrotate(stack_a, 'a');
+		s_wap(stack_a, 'a', 1);
+		revrotate(stack_a, 'a', 1);
 	}
 	else if (a > b && b < c && a > c)
-		rotate(stack_a, 'a');
+		rotate(stack_a, 'a', 1);
 	else if (a < b && b > c && a < c)
 	{
-		swap(stack_a, 'a');
-		rotate(stack_a, 'a');
+		s_wap(stack_a, 'a', 1);
+		rotate(stack_a, 'a', 1);
 	}
 	else if (a < b && b > c && a > c)
-		revrotate(stack_a, 'a');
+		revrotate(stack_a, 'a', 1);
 }
 
 int	is_sorted(t_stack *stack)
@@ -88,12 +88,12 @@ static void final_rotation(t_stack **stack_a)
 	if (min_index <= size/2)
 	{
 		while (min_index-- > 0)
-			rotate(stack_a, 'a');
+			rotate(stack_a, 'a', 1);
 	}
 	else
 	{
 		while (min_index++ < size)
-			revrotate(stack_a, 'a');
+			revrotate(stack_a, 'a', 1);
 	}
 }
 
@@ -103,9 +103,9 @@ void	turk_sort(t_stack **stack_a, t_stack **stack_b)
 	
 	len_a = get_stack_len(*stack_a);
 	if (len_a-- > 3 && (is_sorted(*stack_a)))
-		push_b(stack_a, stack_b);
+		push_b(stack_a, stack_b, 1);
 	if (len_a-- > 3 && (is_sorted(*stack_a)))
-		push_b(stack_a, stack_b);
+		push_b(stack_a, stack_b, 1);
 	move_a_to_b(stack_a, stack_b);
 	move_b_to_a(stack_a, stack_b);
 	if (is_sorted(*stack_a))
